@@ -154,3 +154,25 @@ int main(){
     }
     return 0;
 }
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void checkTwoSumAllAns (int arr[], int n ,int target){
+    //assuming (-1,-1) as no answer found
+    for(int i=0; i<n ; i++){
+        for (int j=0; j<n ; j++){
+            if(arr[i] + arr[j] == target){
+                cout<< arr[i]<< "," << arr[j]<< endl;
+            }
+        }
+    }
+    
+}
+int main(){
+    int arr[]= {10,20,30,40};
+    int n= 4;
+    checkTwoSumAllAns(arr,n,60);
+    
+}
