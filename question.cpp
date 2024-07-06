@@ -199,3 +199,63 @@ int main(){
     checkTwoSumAllAns(arr,n,60);
     
 }
+//Print TRIPLETS 
+// #include <iostream>
+// #include <algorithm>
+// using namespace std;
+
+// void printAllTriplets(int arr[], int n){
+//     int count = 0;
+//     for(int i=0; i<n ;i++){
+//         for(int j=0; j<n; j++ ){
+//             for(int k=0; k<n; k++){
+//                 cout<<arr[i]<<", "<<arr[j]<<", "<<arr[k]<<endl;
+//                 count++;
+//             }
+//         }
+//     }
+//     cout<<"Total number of triplets:"<<count<<endl;
+// }
+// int main(){
+//     int arr[]= {10,20,30,40};
+//     int n= 4;
+//     printAllTriplets(arr,n);
+    
+// }
+
+// Leetcode question
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public: 
+    vector<int> twoSum(vector<int>& nums, int target){
+        vector<int>ans;
+        int n = nums.size();
+        for(int i =0; i<n; i++){
+            for (int j=0; j<n ; j++){
+                if(ans[i] + ans[j] == target){
+                    ans.push_back(i);
+                    ans.push_back(j);
+                    return ans;
+                }
+            }
+        }
+    }    
+};
+int main() {
+    Solution sol;
+    vector<int> nums = {2, 7, 11, 15};
+    int target = 9;
+    
+    vector<int> result = sol.twoSum(nums, target);
+    
+    cout << "Indices: ";
+    for (int i : result) {
+        cout << i << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
