@@ -259,3 +259,73 @@ int main() {
     
     return 0;
 }
+//Three sum
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// void checkThreeSum(int arr[],int n,int target){
+//     for(int i=0; i<n; i++ ){
+//         for(int j=i+1; j<n; j++ ){
+//             for(int k=j+1; k<n; k++ ){
+//                 if (arr[i]+arr[j]+arr[k]== target){
+//                     cout<<arr[i]<<" "<<arr[j]<<" "<<arr[k]<<endl;
+//                 }
+//             }
+//         }
+//     }
+// }
+// int main(){
+//     int arr[]= {10,20,30,40};
+//     int n = 4;
+//     int target = 70;
+//     checkThreeSum(arr,n,target);
+// }
+
+// Shifting an array
+#include <iostream>
+#include <vector>
+using namespace std;
+void rotateArray(int arr[],int size,int shift){
+    int finalShift = shift%size;
+    if (finalShift==0){
+        //no need to do anything
+        return;
+    }
+    // copy last two element to temp
+    int temp[1000];
+    int index = 0;
+    for(int i =size-finalShift; i<size; i++){
+        temp[index] = arr[i];
+        index++;
+    }
+    //step2: shift array elements by finalshift places
+    for(int i= size-1; i>=0; i--){
+        arr[i]= arr[i-finalShift];
+    }
+    //step3: copy temp elements into original array
+    for(int i=0; i<finalShift; i++){
+        arr[i]= temp[i];
+    }
+}
+int main() {
+    int arr[] = {10, 20, 30, 40, 50, 60};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int shift = 2; // Cyclically rotate array by 2
+
+    cout << "Before: " << endl;
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    rotateArray(arr, size, shift);
+
+    cout << "After: " << endl;
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
